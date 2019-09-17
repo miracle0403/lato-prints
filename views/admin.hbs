@@ -1,0 +1,329 @@
+{{#if errors}}
+  {{#each errors}}
+  <div class="alert alert-danger">
+    {{this.msg}}
+  </div>
+  {{/each}}
+{{/if}}
+
+<!-- add and delete admins -->
+<div class = "row">
+	<div class = "col-md-6">
+		<div id = "addadmin" class = "container text-white bg bg-danger text-center">
+			<hr>
+			<h3><b>ADD ADMIN</b></h3><hr>
+		</div>
+		{{#showSuccess}}
+			{{#addsuccess}}
+			  <div id = "productsuccess" class="alert alert-success">
+				{{.}}
+			  </div>
+			{{/addsuccess}}
+		{{/showSuccess}}
+			
+		{{#showErrors}}
+			{{#adderror}}
+			  <div class="alert alert-danger">
+				{{.}}
+			  </div>
+			{{/adderror}}
+		{{/showErrors}}
+		<form method ="POST" action ="/addadmin">
+			<div class="container-fluid">
+				<div class="form-group ">
+					<label for="addadmin">User Id</label>
+					<input type="number" class="form-control" id="user" name ="user" placeholder="Enter user id" required />
+				</div>				
+				<div class="form-group">
+					<button type="submit" class="btn btn-secondary">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class = "col-md-6">
+		<div class = "container text-white bg bg-secondary text-center">
+			<hr>
+			<h3 class = "h3" id = "deladmin"><b>DELETE ADMIN</b></h3><hr>
+		</div>
+		<div class = "container">
+			{{#showSuccess}}
+				{{#adminsuccess}}
+				  <div class="alert alert-success">
+					{{.}}
+				  </div>
+				{{/adminsuccess}}
+			{{/showSuccess}}
+		
+			{{#showErrors}}
+				{{#adminerror}}
+				  <div class="alert alert-danger">
+					{{.}}
+				  </div>
+				{{/adminerror}}
+			{{/showErrors}}
+		</div>
+		<form method ="POST" action ="/deladmin">
+			<div class="container-fluid"> 	
+				<div class="form-group">
+					<label for="product">User id</label>
+					<input type="number" class="form-control" id="user id" name ="user" placeholder="Enter user id" required />
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-danger">Submit</button><br><br>
+				</div>
+			</div>	
+		</form>
+	</div>
+</div>
+<!-- end of add and remove admin -->
+
+
+<!-- change password -->
+<div class = "row">
+	<div class = "col-md-6">
+		<div id = "passwordchange" class = "container text-white bg bg-danger text-center">
+			<hr>
+			<h3><b>CHANGE ADMIN PASSWORD</b></h3><hr>
+		</div>
+		{{#showSuccess}}
+			{{#passwordsuccess}}
+			  <div id = "passwordsuccess" class="alert alert-success">
+				{{.}}
+			  </div>
+			{{/passwordsuccess}}
+		{{/showSuccess}}
+			
+		{{#showErrors}}
+			{{#passworderror}}
+			  <div class="alert alert-danger">
+				{{.}}
+			  </div>
+			{{/passworderror}}
+		{{/showErrors}}
+		<form method ="POST" action ="/changeadminpassword">
+			<div class="container-fluid">
+				<div class="form-group ">
+					<label for="changeadminpassword">Old Password</label>
+					<input type="password" class="form-control" id="password" name ="password" placeholder="Enter Old password" required />
+				</div>	
+				<div class="form-group ">
+					<label for="changeadminpassword">New Password</label>
+					<input type="password" class="form-control" id="password" name ="newpassword" placeholder="Enter New password" required />
+				</div>	
+				<div class="form-group">
+					<button type="submit" class="btn btn-secondary">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class = "col-md-6">
+		<div id = "password change" class = "container text-white bg bg-danger text-center">
+			<hr>
+			<h3><b>CHANGE ADMIN EMAIL</b></h3><hr>
+		</div>
+		{{#showSuccess}}
+			{{#emailsuccess}}
+			  <div id = "emailsuccess" class="alert alert-success">
+				{{.}}
+			  </div>
+			{{/emailsuccess}}
+		{{/showSuccess}}
+			
+		{{#showErrors}}
+			{{#emailerror}}
+			  <div class="alert alert-danger" id = "emailerror">
+				{{.}}
+			  </div>
+			{{/emailerror}}
+		{{/showErrors}}
+		<form method ="POST" action ="/changeadminemail">
+			<div class="container-fluid">
+					
+				<div class="form-group ">
+					<label for="changeadminemail">New Email</label>
+					<input type="email" class="form-control" id="email" name ="newemail" placeholder="Enter New Email" required />
+				</div>	
+				<div class="form-group">
+					<button type="submit" class="btn btn-secondary">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- change password -->
+
+
+
+<!-- add video -->
+<div class = "row">
+	<div class = "col-md-6">
+		<div id = "addvideo" class = "container text-white bg bg-danger text-center">
+			<hr>
+			<h3><b>ADD VIDEO</b></h3><hr>
+		</div>
+		{{#showSuccess}}
+			{{#videosuccess}}
+			  <div id = "videosuccess" class="alert alert-success">
+				{{.}}
+			  </div>
+			{{/videosuccess}}
+		{{/showSuccess}}
+			
+		{{#showErrors}}
+			{{#videoerror}}
+			  <div class="alert alert-danger" id = "videoerror">
+				{{.}}
+			  </div>
+			{{/videoerror}}
+		{{/showErrors}}
+		<form method ="POST" action ="/addvideo">
+			<div class="container-fluid">
+				<div class = "form-row">
+					<div class="form-group col-md-6">					
+						<label for="addvideo">Video Title</label>
+						<input type="text" class="form-control" id="title" name ="title" placeholder="Enter Video Title Here" required />
+					</div>
+					<div class="form-group col-md-6">
+						<label for="videoLink">Video Link</label>
+						<input type="text" class="form-control" id="link" name ="link" placeholder="Enter Video Link Here" required />
+					</div>
+				</div>	
+				<div class="form-group">
+					<textarea name = "description" class = "form-control"></textarea>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-secondary">Submit</button>
+				</div>			
+			</div>
+		</form>
+	</div>
+	<div class = "col-md-6">
+		<div id = "addimage" class = "container text-white bg bg-danger text-center">
+			<hr>
+			<h3><b>ADD IMAGE</b></h3><hr>
+		</div>
+		{{#showSuccess}}
+			{{#imagesuccess}}
+			  <div id = "imagesuccess" class="alert alert-success">
+				{{.}}
+			  </div>
+			{{/imagesuccess}}
+		{{/showSuccess}}
+			
+		{{#showErrors}}
+			{{#imageerror}}
+			  <div class="alert alert-danger" id = "videoerror">
+				{{.}}
+			  </div>
+			{{/imageerror}}
+		{{/showErrors}}
+		<form method ="POST" enctype="multipart/form-data" action ="/addimage">
+			<div class = "row">
+				<div class="form-group col-md-6">					
+					<label for="addimage">Image Title</label>
+					<input type="text" class="form-control" id="title" name ="title" placeholder="Enter Image Title Here" required />
+				</div>
+				<div class="form-group col-md-6">					
+					<label for="addimage">Image Title</label>
+					<input type="file" class="form-control-file" id="Picture" name ="file" placeholder="Enter Image Title Here" required />
+					<div id = "fileerror" class = "alert alert-danger"><div id = "imagepic" class = "alert alert-danger"></div> <div class = "alert alert-info" id = "progress"></div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<textarea name = "description" class = "form-control"></textarea>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-secondary">Submit</button>
+			</div>	
+		</form>
+	</div>
+</div>
+
+<!-- and latest product -->
+
+<!-- and remove video and image -->
+<div class = "row">
+	<div class = "col-md-6">
+		<div id = "removevideo" class = "container text-white bg bg-danger text-center">
+			<hr>
+			<h3><b>DELETE VIDEO</b></h3><hr>
+		</div>
+		{{#showSuccess}}
+			{{#removevideosuccess}}
+			  <div id = "removevideosuccess" class="alert alert-success">
+				{{.}}
+			  </div>
+			{{/removevideosuccess}}
+		{{/showSuccess}}
+			
+		{{#showErrors}}
+			{{#removevideoerror}}
+			  <div class="alert alert-danger" id = "removevideoerror">
+				{{.}}
+			  </div>
+			{{/removevideoerror}}
+		{{/showErrors}}
+		<form method ="POST" action ="/removevideo">
+			<div class="container-fluid">
+				<div class = "form-row">
+					<div class="form-group col-md-6">					
+						<label for="removevideo">Video Title</label>
+						<select class = "form-control" id = "title" name = "title">
+							{{#if videotitle}}
+								{{#each videotitle}}
+									<option>{{title}}</option>
+								{{#each videotitle}}
+							{{/if}}
+						</select>
+					</div>
+					<div class="form-group col-md-6">
+						<button type="submit" class="btn btn-secondary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class = "col-md-6">
+		<div id = "removeimage" class = "container text-white bg bg-danger text-center">
+			<hr>
+			<h3><b>DELETE IMAGE</b></h3><hr>
+		</div>
+		{{#showSuccess}}
+			{{#removeimagesuccess}}
+			  <div id = "removeimagesuccess" class="alert alert-success">
+				{{.}}
+			  </div>
+			{{/removeimagesuccess}}
+		{{/showSuccess}}
+			
+		{{#showErrors}}
+			{{#removeimageerror}}
+			  <div class="alert alert-danger" id = "removeimageerror">
+				{{.}}
+			  </div>
+			{{/removeimageerror}}
+		{{/showErrors}}
+		<form method ="POST" action ="/removeimage">
+			<div class="container-fluid">
+				<div class = "form-row">
+					<div class="form-group col-md-6">					
+						<label for="removevideo">Image Title</label>
+						<select class = "form-control" id = "title" name = "title">
+							{{#if imagetitle}}
+								{{#each imagetitle}}
+									<option>{{title}}</option>
+								{{#each imagetitle}}
+							{{/if}}
+						</select>
+					</div>
+					<div class="form-group col-md-6">
+						<button type="submit" class="btn btn-secondary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- remove video and image -->

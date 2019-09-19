@@ -39,6 +39,154 @@ router.get('/products', function(req, res, next) {
   res.render('products', { title: 'LATOLAK PRINTS', sub: 'OUR PRODUCTS' });
 });
 
+//admin page
+router.get('/admin', ensureLoggedIn('/login'), function(req, res, next) {
+	var currentUser = req.session.passport.user.user_id;
+	db.query('SELECT user FROM admin WHERE user = ?', [currentUser], function(err, results, fields){
+		if (err) throw err;
+		if(results.length === 0){
+			res.redirect('/404');
+		}else{
+			//video check
+			db.query('SELECT title FROM videos', function(err, results, fields){
+				if (err) throw err;
+				var videos = results;
+				db.query('SELECT title FROM latest_products', function(err, results, fields){
+					if (err) throw err;
+					var images = results;
+					
+					var flashMessages = res.locals.getMessages();
+					if( flashMessages.adderror ){
+						res.render( 'admin', {
+							title: 'ADMIN CORNER',
+							imagetitle:	images,
+							videotitle: videos,
+							showErrors: true,
+							errors: flashMessages.adderror
+						});
+					}else{
+						if( flashMessages.addsuccess ){
+							res.render( 'admin', {
+								title: 'ADMIN CORNER',
+								showSuccess: true,
+								imagetitle:	images,
+								videotitle: videos,
+								success: flashMessages.addsuccess
+							});
+						}else{
+							if( flashMessages.delsuccess ){
+								res.render( 'admin', {
+									title: 'ADMIN CORNER',
+									showSuccess: true,
+									imagetitle:	images,
+									videotitle: videos,
+									success: flashMessages.delsuccess
+								});
+							}else{
+								if( flashMessages.adminerror ){
+									res.render( 'admin', {
+										title: 'ADMIN CORNER',
+										imagetitle:	images,
+										videotitle: videos,
+										showErrors: true,
+										errors: flashMessages.adminerror
+									});
+								}else{
+									if( flashMessages.removeimagesuccess ){
+										res.render( 'admin', {
+											title: 'ADMIN CORNER',
+											showSuccess: true,
+											imagetitle:	images,
+											videotitle: videos,
+											success: flashMessages.removeimagesuccess
+										});
+									}else{
+										if( flashMessages.removevideosuccess ){
+											res.render( 'admin', {
+												title: 'ADMIN CORNER',
+												showSuccess: true,
+												imagetitle:	images,
+												videotitle: videos,
+												success: flashMessages.removevideosuccess
+											});
+										}else{
+											if( flashMessages.passwordsuccess ){
+												res.render( 'admin', {
+													title: 'ADMIN CORNER',
+													showSuccess: true,
+													imagetitle:	images,
+													videotitle: videos,
+													success: flashMessages.passwordsuccess
+												});
+											}else{
+												if( flashMessages.emailsuccess ){
+													res.render( 'admin', {
+														title: 'ADMIN CORNER',
+														showSuccess: true,
+														imagetitle:	images,
+														videotitle: videos,
+														success: flashMessages.emailsuccess
+													});
+												}else{
+													if( flashMessages.emailerror ){
+														res.render( 'admin', {
+															title: 'ADMIN CORNER',
+															imagetitle:	images,
+															videotitle: videos,
+															showErrors: true,
+															errors: flashMessages.emailerror
+														});
+													}else{
+														if( flashMessages.videoerror ){
+															res.render( 'admin', {
+																title: 'ADMIN CORNER',
+																imagetitle:	images,
+																videotitle: videos,
+																showErrors: true,
+																errors: flashMessages.videoerror
+															});
+														}else{
+															if( flashMessages.videosuccess ){
+																res.render( 'admin', {
+																	title: 'ADMIN CORNER',
+																	showSuccess: true,
+																	imagetitle:	images,
+																	videotitle: videos,
+																	success: flashMessages.videosuccess
+																});
+															}else{
+																if( flashMessages.imagesuccess ){
+																	res.render( 'admin', {
+																		title: 'ADMIN CORNER',
+																		showSuccess: true,
+																		imagetitle:	images,
+																		videotitle: videos,
+																		success: flashMessages.imagesuccess
+																	});
+																}else{
+																	res.render( 'admin', {
+																		title: 'ADMIN CORNER',
+																		imagetitle:	images,
+																		videotitle: videos
+																	});
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}):
+			});
+		}		
+	}):
+});
+
 //register get request
 router.get('/register', function(req, res, next) {	
     res.render('register',  { title: 'REGISTRATION'});

@@ -1,4 +1,4 @@
-var sql = require ('mysql') || require('pgsql');
+var sql = require('pg');
 var server = require ('./app.js');
 
 var pool  = sql.createPool({

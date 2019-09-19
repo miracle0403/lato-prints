@@ -11,11 +11,11 @@ var fs = require('fs');
 var helmet = require('helmet');
 var tables = require('./tables.js');
 var expressValidator = require('express-validator');
-var sql = require ('mysql') || require('pgsql');
+var sql = require('pg');
 
 var localStrategy = require('passport-local'),Strategy;
 var session = require('express-session');
-var MySQLStore = require ('express-mysql-session')(session) //|| session store for pgsql;
+var SQLStore = require ('connect-pg-simple')(session) 
 var flash = require('express-flash-messages');
 
 var indexRouter = require('./routes/index');
@@ -47,7 +47,7 @@ var options = {
 
 app.use(myConnection(sql, options, 'pool')); 
 
-var sessionStore = new MySQLStore(options);
+var sessionStore = new SQLStore(options);
 
 app.use(session({
   secret: 'fbmdhmdfishjdj',

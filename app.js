@@ -11,11 +11,11 @@ var fs = require('fs');
 var helmet = require('helmet');
 var tables = require('./tables.js');
 var expressValidator = require('express-validator');
-var sql = require('pg');
+var sql = require('mysql');
 
 var localStrategy = require('passport-local'),Strategy;
 var session = require('express-session');
-var SQLStore = require ('connect-pg-simple')(session) 
+var SQLStore = require ('express-mysql-session')(session) 
 var flash = require('express-flash-messages');
 
 var indexRouter = require('./routes/index');

@@ -1,4 +1,4 @@
-var sql = require('pg');
+var mysql = require('mysql');
 var server = require ('./app.js');
 
 var pool  = sql.createPool({
@@ -7,9 +7,9 @@ var pool  = sql.createPool({
   waitForConnections: true,
   host: "localhost",
   user: "root",
-  //password: 'ifeysamuel',
+  password: '' || '',
   database: "lato-prints"
-});
+}) ||
 
 pool.getConnection( function ( err, con ){
 	if ( err ){

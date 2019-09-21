@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 var server = require ('./app.js');
 
-var pool  = sql.createPool({
+var pool  =  mysql.createPool({
   multipleStatements: true,
   connectionLimit : 100,
   waitForConnections: true,

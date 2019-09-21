@@ -6,7 +6,6 @@ var fs = require('fs');
 var passport = require('passport');
 var db = require('../db.js'); 
 var bcrypt = require('bcrypt-nodejs');
-var securePin = require('secure-pin');
 var url = require('url'); 
 var math = require( 'mathjs' );
 

@@ -10,7 +10,7 @@ var hbs = require('express-handlebars');
 var fs = require('fs');
 var helmet = require('helmet');
 var tables = require('./tables.js');
-var expressValidator = require('express-validator');
+//var expressValidator = require('express-validator');
 var sql = require('mysql');
 
 var localStrategy = require('passport-local'),Strategy;

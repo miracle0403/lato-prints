@@ -7,7 +7,7 @@ var passport = require('passport');
 var db = require('../db.js'); 
 var bcrypt = require('bcrypt-nodejs');
 var url = require('url'); 
-var math = require( 'mathjs' );
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -180,10 +180,10 @@ router.get('/admin', ensureLoggedIn('/login'), function(req, res, next) {
 							}
 						}
 					}
-				}):
+				});
 			});
 		}		
-	}):
+	});
 });
 
 //register get request
@@ -398,7 +398,7 @@ router.post('/changeadminemail', function (req, res, next) {
 			}
 		});
 	}
-}):
+});
 
 //post the video
 router.post('/addvideo', function (req, res, next) {
@@ -420,7 +420,7 @@ router.post('/addvideo', function (req, res, next) {
 			res.redirect('/admin/#videosuccess');
 		});
 	}	
-}):
+});
 
 //remove the video
 router.post('/removevideo', function (req, res, next){
@@ -455,10 +455,10 @@ router.post('/removeimage', function (req, res, next){
 				var success = 'Image Deleted!';
 				req.flash('removeimagesuccess', success);
 				res.redirect('/admin/#removeimagesuccess');
-			}):
-		}):
+			});
+		});
 	});
-}
+});
 
 //post the image
 router.post('/addimage', function (req, res, next) {
@@ -505,11 +505,11 @@ router.post('/addimage', function (req, res, next) {
 							var success =  'Image has been added successfully!';
 							req.flash('imageuccess', success);
 							res.redirect('/admin/#imagesuccess')
-						}):
+						});
 					}
-				}):
-			}
-		}
+				});
+			});
+		});
 	}
 });
 

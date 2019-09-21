@@ -4,15 +4,18 @@ var helmet = require( 'helmet' );
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var hbs = require('express-handlebars');
 var fs = require('fs');
 var helmet = require('helmet');
 var tables = require('./tables.js');
-//var expressValidator = require('express-validator');
+var expressValidator = require('express-validator');
 var sql = require('mysql');
+//var formidable = require('formidable');
 
+var passport = require('passport');
 var localStrategy = require('passport-local'),Strategy;
 var session = require('express-session');
 var SQLStore = require ('express-mysql-session')(session) 
@@ -45,7 +48,7 @@ var options = {
   database: "lato-prints"
 };
 
-app.use(myConnection(sql, options, 'pool')); 
+//app.use(myConnection(sql, options, 'pool')); 
 
 var sessionStore = new SQLStore(options);
 
@@ -54,7 +57,7 @@ app.use(session({
   resave: false,
   store: sessionStore,
   saveUninitialized: false,
-  name: 'lato-prints',
+  name: 'lato' || 'lato-prints',
   /**cookie:
     #secure: true**/
   }));

@@ -8,8 +8,8 @@ var pool  =  mysql.createPool({
   host: "localhost",
   user: "root",
   password: '' || '',
-  database: "lato-prints"
-}) ||
+  database: "lato-prints" || 'lato'
+}) 
 
 pool.getConnection( function ( err, con ){
 	if ( err ){
